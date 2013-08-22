@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    
+    NSStatusItem *trayItem;
+}
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSView *palettes;
 
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

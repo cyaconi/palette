@@ -14,9 +14,25 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSMenu* newMenu = [[NSMenu alloc] initWithTitle:@"Custom"];
+    NSMenuItem* newItem;
+    newItem = [[NSMenuItem alloc]
+               initWithTitle:@"Custom Item 1"
+               action:@selector(menuItem1Action:)
+               keyEquivalent:@""];
+    [newItem setView: self.palettes];
+    [newItem setTarget:self];
+    [newMenu addItem:newItem];
+    
+    trayItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+	[trayItem setMenu:newMenu];
+	[trayItem setHighlightMode:YES];
+	[trayItem setTitle:@"CF"];
+
+    
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.yaconi.Palette" in the user's Application Support directory.
@@ -179,5 +195,6 @@
 
     return NSTerminateNow;
 }
+
 
 @end
